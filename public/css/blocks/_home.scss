@@ -1,0 +1,233 @@
+.main {
+    margin-left: 170px;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__title-wrapper{
+        display: flex;
+        gap: 50px;
+    }
+
+    &__title-text {
+        position: relative;
+        animation: showLeft 1s;
+        z-index: 1;
+
+        h1 {
+            font-size: 48px;
+            white-space: nowrap;
+            overflow: hidden;
+            color: $base_color;
+            animation: typewriter 3s steps(13) infinite alternate;
+            border-right: 5px solid black;
+            width: 320px;
+            margin-top: 100px;
+            font-weight: bold;
+        }
+
+        p {
+            width: 371px;
+            font-size: 20px;
+            color: $second_color;
+            margin-top: 42px;
+            font-weight: bold;
+        }
+    }
+
+    &__slider-wrapper {
+        height: 520px;
+        margin: 100px auto 0;
+        position: relative;
+        width: 715px;
+        top: 0;
+        left: 0;
+
+        input {
+            display: none;
+        }
+    }
+
+    &__slider {
+        position: relative;
+        animation: showRight 1s;
+        z-index: 1;
+        height: inherit;
+        overflow: hidden;
+        width: inherit;
+
+        &-slides {
+            height: inherit;
+            position: absolute;
+            width: inherit;
+            opacity: 0;
+            z-index: 0;
+            transform: scale(1);
+            transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+        }
+
+        img {
+            animation: ani .3s;
+        }
+    }
+
+    &__prev-button,
+    &__next-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        color: #fff;
+        z-index: 999;
+    }
+
+    &__next-button {
+        right: 5px;
+    }
+
+    &__card-block {
+        margin-top: 100px;
+        position: relative;
+    }
+
+    &__card-1,
+    &__card-2 {
+        background-color: $card-background;
+        width: 997px;
+        height: 391px;
+        border-radius: 50px;
+        box-shadow: 6px 6px 25px 4px rgba(34, 60, 80, 0.2);
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 60px;
+
+        &_text {
+            h2 {
+                font-size: 24px;
+                font-weight: bold;
+                color: $base_color;
+                padding: 54px 0px 0px 59px;
+                width: 400px;
+            }
+
+            p {
+                font-size: 16px;
+                color: $second_color;
+                padding: 31px 0 0 59px;
+                width: 450px;
+            }
+
+            button {
+                background-color: $base_color;
+                border: none;
+                padding: 11px 33px;
+                font-size: 16px;
+                font-weight: bold;
+                color: $white;
+                border-radius: 10px;
+                margin: 30px 0 0 59px;
+                cursor: pointer;
+                transition: transform ease-in-out .5s, opacity ease-in-out .5s, background-color ease-in-out .2s;
+
+                &:hover {
+                    transform: scale(1.05);
+                    opacity: 0.9;
+                    background-color: $base_color-hover;
+                }
+            }
+        }
+    }
+
+    &__modals {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 1000;
+    
+        &.active {
+          visibility: visible;
+          opacity: 1;
+        }
+    
+        .main__window-1,
+        .main__window-2 {
+          background-color: $white;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          max-width: 600px;
+          width: 90%;
+          padding: 20px;
+          position: relative;
+          transform: scale(0.9);
+          transition: transform 0.3s ease;
+    
+          &.active {
+            transform: scale(1);
+          }
+    
+          .main__modal-more {
+            img {
+              width: 100%;
+              height: auto;
+              border-radius: 8px;
+              margin-bottom: 15px;
+            }
+    
+            p {
+              font-size: 16px;
+              line-height: 1.5;
+              color: $second_color;
+            }
+          }
+    
+          .main__back {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: $second_color;
+
+            &:hover {
+              color: $black;
+            }
+          }
+        }
+      }
+
+    &__map {
+        opacity: 0;
+        animation: ani 2.5s forwards;
+        margin-top: 100px;
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            color: $base_color;
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            height: 812px;
+            width: 996px;
+        }
+    }
+}

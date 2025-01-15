@@ -1,0 +1,73 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    width: 100%;
+
+    &__welcome {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    &__autorization {
+        font-size: 28px;
+        color: $black;
+    }
+
+    &__login-wrap{
+          display: flex;
+          margin-bottom: 20px;
+          justify-content: space-between;
+    }
+
+    &__login-p {
+        margin-top: 10px;
+        font-size: 14px;
+        color: $second_color;
+    }
+
+    &__login-a {
+        color: $base_color;
+        text-decoration: none;
+        &:hover{
+          color: $base_color-hover;
+        }
+    }
+
+    &__email-p,
+    &__personal-p,
+    &__password-p,
+    &__confirm-password-p {
+        font-size: 14px;
+        color: $second_color;
+    }
+
+    &__email-inp,
+    &__personal-inp,
+    &__password-inp,
+    &__confirm-password-inp {
+        padding: 8px;
+        border: 1px solid $input_border;
+        border-radius: 4px;
+    }
+
+    &__error {
+        color: $red;
+        font-size: 14px;
+      }
+
+      &__button {
+        margin-top: 80px;
+        padding: 10px;
+        background-color: $base_color;
+        color: $white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $base_color-hover;
+        }
+      }
+  }

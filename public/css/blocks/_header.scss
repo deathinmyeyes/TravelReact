@@ -1,0 +1,90 @@
+.header {
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        display: flex;
+        gap: 5px;
+
+        h2 {
+            margin-top: 40px;
+            color: $black;
+        }
+    }
+
+    &__list {
+        margin-left: -90px;
+        margin-top: 20px;
+        display: flex;
+        gap: 60px;
+        font-size: 20px;
+        li {
+            display: flex;
+
+            a {
+                font-weight: 400;
+                color: $black;
+                transition: scale ease-in-out .25s;
+
+                &:hover {
+                    cursor: pointer;
+                    scale: .9;
+                    opacity: .8;
+                }
+            }
+        }
+    }
+
+    &__button {
+        margin-top: 20px;
+        float: right;
+        display: flex;
+        align-items: center;
+
+        button{
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+            background-color: $white;
+            margin-right: 20px;
+            cursor: pointer;
+            border: 1px solid;
+            border-radius: 5px 50% 50% 5px;
+            &::after{
+                content: '☀';
+            }
+        }
+
+        a {
+            background-color: $base_color;
+            display: block;
+            padding: 8px 29px;
+            border-radius: 6px;
+            color: $white;
+            transition: all ease-in-out .2s;
+            &:hover {
+                scale: 1.03;
+                background-color: $base_color-hover;
+            }
+        }
+    }
+
+    &__burger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+
+        .burger__line {
+            width: 25px;
+            height: 3px;
+            margin: 4px 0;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ani{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showLeft{
+    from {
+        left:-100%;
+    }
+    to {
+        left:0;
+    }
+}
+
+@keyframes showRight{
+    from {
+        right:-100%;
+    }
+    to {
+        right:0;
+    }
+}
+
+@keyframes typewriter{
+    from {
+        width: 10%;
+    }
+    to {
+        width: 370px;
+    }
+}
