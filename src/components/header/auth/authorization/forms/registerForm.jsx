@@ -42,7 +42,6 @@ export default function RegisterForm ({ onClose }) {
     const response = await sendDataToServer({ email, name, password });
     if (response.ok) {
       alert("Вы зарегистрированы");
-      onClose();
     } else {
       setError("Ошибка при регистрации");
     }

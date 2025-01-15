@@ -30,8 +30,7 @@ const LoginForm = ({ onClose }) => {
     const response = await checkUserOnServer(email, password);
     if (response.success) {
       alert("Вы успешно вошли в свой аккаунт");
-      onClose();
-      window.location.href = "./profile.html";
+      window.location.href = "/profile";
     } else {
       setError(response.message);
     }

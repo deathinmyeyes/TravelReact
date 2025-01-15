@@ -5,6 +5,7 @@ import HomePage from './components/screens/home/home.jsx';
 import ContactPage from './components/screens/contact/contact.jsx';
 import LoginForm from './components/header/auth/authorization/forms/loginForm.jsx';
 import RegisterForm from './components/header/auth/authorization/forms/registerForm.jsx';
+import ProfilePage from './components/screens/profile/profile.jsx';
 import '../public/css/style.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -329,6 +329,151 @@ button {
   background-color: #1486D9;
 }
 
+.profile {
+  padding: 40px 0;
+}
+.profile .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.profile h1 {
+  font-size: 2.5rem;
+  color: #195581;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.profile h2 {
+  font-size: 2.5rem;
+  color: #195581;
+  margin-bottom: 20px;
+}
+.profile #search-history {
+  margin-bottom: 30px;
+}
+.profile #search-history li {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+.profile #user-info {
+  margin-bottom: 30px;
+}
+.profile #user-info p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+.profile #user-info p strong {
+  color: #195581;
+}
+.profile #change-name-form {
+  margin-bottom: 30px;
+}
+.profile #change-name-form h2 {
+  font-size: 1.8rem;
+  color: #195581;
+  margin-bottom: 20px;
+}
+.profile #change-name-form p {
+  margin: 15px 0;
+}
+.profile #change-name-form p label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+.profile #change-name-form p input[type=text] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  outline: none;
+}
+.profile #change-name-form p input[type=text]:focus {
+  border-color: #195581;
+}
+.profile #change-name-form button {
+  background-color: #195581;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.profile #change-name-form button:hover {
+  background-color: #1486D9;
+}
+.profile #change-password-form {
+  margin-bottom: 30px;
+}
+.profile #change-password-form h2 {
+  font-size: 1.8rem;
+  color: #195581;
+  margin-bottom: 20px;
+}
+.profile #change-password-form p {
+  margin: 15px 0;
+}
+.profile #change-password-form p label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+.profile #change-password-form p input[type=password] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+  outline: none;
+}
+.profile #change-password-form p input[type=password]:focus {
+  border-color: #195581;
+}
+.profile #change-password-form button {
+  background-color: #195581;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.profile #change-password-form button:hover {
+  background-color: #1486D9;
+}
+.profile #clear-history {
+  margin-bottom: 30px;
+  background-color: #195581;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.profile #clear-history:hover {
+  background-color: #1486D9;
+}
+.profile #logout-link {
+  display: inline-block;
+  color: #195581;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.profile #logout-link:hover {
+  color: #1486D9;
+}
+
 .main__wrapper {
   display: flex;
   flex-direction: column;
