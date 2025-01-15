@@ -162,6 +162,7 @@ button {
   float: right;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .header__button button {
   width: 36px;

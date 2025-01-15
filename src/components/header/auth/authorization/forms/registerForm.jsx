@@ -1,49 +1,50 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function RegisterForm ({ onClose }) {
+export default function RegisterForm({ onClose }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const passwordWithoutSpaces = password.replaceAll(" ", "");
-    let errorMessage = "";
 
     if (email === "" || password === "" || repassword === "") {
-      errorMessage = "Введите все данные";
+      toast.error("Введите все данные");
+      return;
     } else if (!email.includes("@") || !email.includes(".")) {
-      errorMessage = "Неверный формат электронной почты";
+      toast.error("Неверный формат электронной почты");
+      return;
     } else if (name.length <= 1 || name.length > 50) {
-      errorMessage = "Неправильное имя";
+      toast.error("Неправильное имя");
+      return;
     } else if (password !== repassword) {
-      errorMessage = "Пароли не совпадают";
+      toast.error("Пароли не совпадают");
+      return;
     } else if (passwordWithoutSpaces.length === 0) {
-      errorMessage = "Пароль не может состоять из пробелов";
+      toast.error("Пароль не может состоять из пробелов");
+      return;
     } else if (passwordWithoutSpaces.length < 8) {
-      errorMessage = "Пароль слишком короткий";
-    }
-
-    if (errorMessage) {
-      setError(errorMessage);
+      toast.error("Пароль слишком короткий");
       return;
     }
 
     const emailExists = await checkEmailExists(email);
     if (emailExists) {
-      setError("Этот email уже зарегистрирован");
+      toast.error("Этот email уже зарегистрирован");
       return;
     }
 
     const response = await sendDataToServer({ email, name, password });
     if (response.ok) {
-      alert("Вы зарегистрированы");
+      toast.success("Вы зарегистрированы");
     } else {
-      setError("Ошибка при регистрации");
+      toast.error("Ошибка при регистрации");
     }
   };
 
@@ -58,7 +59,7 @@ export default function RegisterForm ({ onClose }) {
       }
       return false;
     } catch (error) {
-      console.error("Ошибка:", error);
+      toast.error("Ошибка при проверке email");
       return false;
     }
   };
@@ -74,7 +75,7 @@ export default function RegisterForm ({ onClose }) {
       });
       return response;
     } catch (error) {
-      console.error("Ошибка:", error);
+      toast.error("Ошибка при отправке данных");
       return { ok: false };
     }
   };
@@ -87,8 +88,8 @@ export default function RegisterForm ({ onClose }) {
           <div className="register__login-wrap">
             <p className="register__autorization">Регистрация</p>
             <div className="">
-                <p className="register__login-p">Есть аккаунт?</p>
-                <Link className="register__login-a" to="/login">Авторизуйтесь</Link>
+              <p className="register__login-p">Есть аккаунт?</p>
+              <Link className="register__login-a" to="/login">Авторизуйтесь</Link>
             </div>
           </div>
           <p className="register__email-p">Введите свой Email</p>
@@ -121,12 +122,12 @@ export default function RegisterForm ({ onClose }) {
             value={repassword}
             onChange={(e) => setRepassword(e.target.value)}
           />
-          {error && <p className="register__error">{error}</p>}
           <button className="register__button" type="submit">
             Зарегистрироваться
           </button>
         </form>
+        <ToastContainer />
       </div>
     </>
   );
-};
+}

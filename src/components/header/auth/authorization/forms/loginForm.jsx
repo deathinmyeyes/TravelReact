@@ -1,38 +1,37 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const passwordWithoutSpaces = password.replaceAll(" ", "");
-    let errorMessage = "";
 
     if (email === "" || password === "") {
-      errorMessage = "Введите все данные";
+      toast.error("Введите все данные");
+      return;
     } else if (!email.includes("@") || !email.includes(".")) {
-      errorMessage = "Неверный формат электронной почты";
+      toast.error("Неверный формат электронной почты");
+      return;
     } else if (passwordWithoutSpaces.length === 0) {
-      errorMessage = "Пароль не может состоять из пробелов";
+      toast.error("Пароль не может состоять из пробелов");
+      return;
     } else if (passwordWithoutSpaces.length < 8) {
-      errorMessage = "Пароль слишком короткий";
-    }
-
-    if (errorMessage) {
-      setError(errorMessage);
+      toast.error("Пароль слишком короткий");
       return;
     }
 
     const response = await checkUserOnServer(email, password);
     if (response.success) {
-      alert("Вы успешно вошли в свой аккаунт");
+      toast.success("Вы успешно вошли в свой аккаунт");
       window.location.href = "/profile";
     } else {
-      setError(response.message);
+      toast.error(response.message);
     }
   };
 
@@ -55,7 +54,7 @@ const LoginForm = ({ onClose }) => {
         }
       }
     } catch (error) {
-      console.error("Ошибка:", error);
+      toast.error("Произошла ошибка при проверке данных");
       return { success: false, message: "Произошла ошибка при проверке данных" };
     }
   };
@@ -90,11 +89,11 @@ const LoginForm = ({ onClose }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {error && <p className="login__error">{error}</p>}
           <button className="login__button" type="submit" id="submit" name="submit">
             Войти
           </button>
         </form>
+        <ToastContainer />
       </div>
     </>
   );
