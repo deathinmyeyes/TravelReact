@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function HomeBtn () {
     return (
         <>
-            <li><a href="">Домой</a></li>
+            Домой
         </>
     )
 }

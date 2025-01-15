@@ -1,6 +1,5 @@
 import ChangeTheme from "./theme/theme";
-import RegisterModal from "./authorization/register";
-import LoginModal from "./authorization/login";
+import { Link } from "react-router-dom";
 
 
 export default function Authorization() {
@@ -8,9 +7,8 @@ export default function Authorization() {
         <>
             <div className="header__button">
                 <ChangeTheme />
+                <Link to='/login'>Авторизация</Link>
             </div>
-            <LoginModal />
-            <RegisterModal />
         </>
     )
 }

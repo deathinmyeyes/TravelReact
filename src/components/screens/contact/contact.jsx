@@ -5,7 +5,9 @@ export default function ContactPage () {
         <>
             <div className="contacts">
                 <div className="container">
-                    <ContactBlock />
+                    <div className="contacts__wrapper">
+                        <ContactBlock />
+                    </div>
                 </div>
             </div>
         </>

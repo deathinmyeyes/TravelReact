@@ -24,9 +24,9 @@ export default function ContactBlock() {
                     <p>Республика Татарстан, г. Елабуга, ул. Норд-Драйв 7А.</p>
                 </div>
                 <button className="contacts__call" onClick={openModal}>Обратная связь</button>
-                <div className="contacts__picture">
-                    <img src="./img/contact_images/contacts_operators.png" alt="png" className="contacts__operators" />
-                </div>
+            </div>
+            <div className="contacts__picture">
+                <img src="./img/contact_images/contacts_operators.png" alt="png" className="contacts__operators" />
             </div>
 
             {isModalOpen && (

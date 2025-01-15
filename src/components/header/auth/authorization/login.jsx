@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "../../../screens/blocks/modal";
-import LoginForm from "../../../screens/autorization/login/loginForm";
+import LoginForm from "./forms/loginForm";
 
 export default function LoginModal () {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);

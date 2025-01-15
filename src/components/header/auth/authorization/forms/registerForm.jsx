@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function RegisterForm ({ onClose }) {
   const [email, setEmail] = useState("");
@@ -80,49 +81,53 @@ export default function RegisterForm ({ onClose }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="register">
-      <p className="register__welcome">Добро пожаловать</p>
-      <div className="login__login-wrap">
-        <p className="login__autorization">Регистрация</p>
-        <div className="">
-            <p className="login__login-p">Есть аккаунт?</p>
-            <a className="login__login-a" href="./register.html">Авторизуйтесь</a>
-        </div>
+    <>
+      <div className="register__wrapper">
+        <form onSubmit={handleSubmit} className="register">
+          <p className="register__welcome">Добро пожаловать</p>
+          <div className="register__login-wrap">
+            <p className="register__autorization">Регистрация</p>
+            <div className="">
+                <p className="register__login-p">Есть аккаунт?</p>
+                <Link className="register__login-a" to="/login">Авторизуйтесь</Link>
+            </div>
+          </div>
+          <p className="register__email-p">Введите свой Email</p>
+          <input
+            className="register__email-inp"
+            type="email"
+            placeholder="qwerty123@mail.ru"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <p className="register__personal-p">Логин</p>
+          <input
+            className="register__personal-inp"
+            type="text"
+            placeholder="qwerty"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <p className="register__password-p">Введите пароль</p>
+          <input
+            className="register__password-inp"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <p className="register__confirm-password-p">Подтвердите пароль</p>
+          <input
+            className="register__confirm-password-inp"
+            type="password"
+            value={repassword}
+            onChange={(e) => setRepassword(e.target.value)}
+          />
+          {error && <p className="register__error">{error}</p>}
+          <button className="register__button" type="submit">
+            Зарегистрироваться
+          </button>
+        </form>
       </div>
-      <p className="register__email-p">Введите свой Email</p>
-      <input
-        className="register__email-inp"
-        type="email"
-        placeholder="qwerty123@mail.ru"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <p className="register__personal-p">Логин</p>
-      <input
-        className="register__personal-inp"
-        type="text"
-        placeholder="qwerty"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <p className="register__password-p">Введите пароль</p>
-      <input
-        className="register__password-inp"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <p className="register__confirm-password-p">Подтвердите пароль</p>
-      <input
-        className="register__confirm-password-inp"
-        type="password"
-        value={repassword}
-        onChange={(e) => setRepassword(e.target.value)}
-      />
-      {error && <p className="register__error">{error}</p>}
-      <button className="register__button" type="submit">
-        Зарегистрироваться
-      </button>
-    </form>
+    </>
   );
 };

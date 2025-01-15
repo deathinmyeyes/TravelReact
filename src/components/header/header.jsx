@@ -1,7 +1,7 @@
 import Logo from "./logo/logo";
 import Navigation from "./navigation/navigation";
-import Authorization from "./auth/auth";
 import { Link } from "react-router-dom";
+import Authorization from "./auth/auth";
 
 export default function Header () {
     return (
@@ -12,7 +12,6 @@ export default function Header () {
                     <Link to="/main">
                         <Logo />
                     </Link>
-
                     <Navigation />
                     <Authorization />
                 </div>

@@ -2,8 +2,16 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
+    background: $card-background;
+    padding: 30px;
+    border-radius: 10px;
+
+    &__wrapper{
+        display: flex;
+        justify-content: center;
+    }
 
     &__welcome {
         font-size: 32px;

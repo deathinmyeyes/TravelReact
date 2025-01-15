@@ -9,7 +9,7 @@ export default function Navigation () {
             <div className="header__nav">
                 <ul className="header__list">
                     <li><Link to="/main"><HomeBtn /></Link></li>
-                    <li><Link to="/route"><RouteBtn /></Link></li>
+                    <li><Link to="/routes"><RouteBtn /></Link></li>
                     <li><Link to="/contact"><ContactBtn /></Link></li>
                 </ul>
             </div>

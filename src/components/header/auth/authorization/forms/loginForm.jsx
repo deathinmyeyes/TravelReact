@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const LoginForm = ({ onClose }) => {
   const [email, setEmail] = useState("");
@@ -61,38 +62,42 @@ const LoginForm = ({ onClose }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login">
-      <p className="login__welcome">Добро пожаловать</p>
-      <div className="login__login-wrap">
-        <p className="login__autorization">Авторизация</p>
-        <div className="">
-            <p className="login__login-p">Нету аккаунта?</p>
-            <a className="login__login-a" href="./register.html">Зарегистрируйтесь</a>
-        </div>
+    <>
+      <div className="login__wrapper">
+        <form onSubmit={handleSubmit} className="login">
+          <p className="login__welcome">Добро пожаловать</p>
+          <div className="login__login-wrap">
+            <p className="login__autorization">Авторизация</p>
+            <div className="">
+                <p className="login__login-p">Нету аккаунта?</p>
+                <Link className="login__login-a" to="/register">Зарегистрируйтесь</Link>
+            </div>
+          </div>
+          <p className="login__email-p">Введите свой Email</p>
+          <input
+            className="login__email-inp"
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <p className="login__password-p">Введите пароль</p>
+          <input
+            className="login__password-inp"
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <p className="login__error">{error}</p>}
+          <button className="login__button" type="submit" id="submit" name="submit">
+            Войти
+          </button>
+        </form>
       </div>
-      <p className="login__email-p">Введите свой Email</p>
-      <input
-        className="login__email-inp"
-        type="email"
-        id="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <p className="login__password-p">Введите пароль</p>
-      <input
-        className="login__password-inp"
-        type="password"
-        id="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {error && <p className="login__error">{error}</p>}
-      <button className="login__button" type="submit" id="submit" name="submit">
-        Войти
-      </button>
-    </form>
+    </>
   );
 };
 
