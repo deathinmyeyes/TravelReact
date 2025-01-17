@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ChangeTheme from "./theme/theme";
 import { toast } from "react-toastify";
 
 export default function Authorization() {
@@ -32,7 +31,6 @@ export default function Authorization() {
 
     return (
         <div className="header__button">
-            <ChangeTheme />
             {isAuthenticated ? (
                 <>
                     <Link to="/profile">Профиль</Link>

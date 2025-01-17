@@ -1,14 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/header/header.jsx';
-import Footer from './components/footer/footer.jsx';
-import HomePage from './components/screens/home/home.jsx';
-import ContactPage from './components/screens/contact/contact.jsx';
-import LoginForm from './components/header/auth/authorization/forms/loginForm.jsx';
-import RegisterForm from './components/header/auth/authorization/forms/registerForm.jsx';
-import ProfilePage from './components/screens/profile/profile.jsx';
+
+import Header from './screens/header.jsx';
+import Footer from './screens/footer.jsx';
+
+import HomePage from './screens/home.jsx';
+import ContactPage from './screens/contacts.jsx';
+import LoginPage from './screens/login.jsx';
+import RegisterPage from './screens/register.jsx';
+import ProfilePage from './screens/profile.jsx';
+import RoutesPage from './screens/routes.jsx';
 import '../public/css/style.css';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Header />
@@ -16,13 +19,12 @@ function App() {
         <Route exact path="/" element={<Navigate to="/main" />} />
         <Route path='/main' element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path='/routes' element={<RoutesPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
 }
-
-export default App;

@@ -1,7 +1,7 @@
-import MainTitle from "./homeComps/title";
-import MainSlider from "./homeComps/slider";
-import MainMap from "./homeComps/map";
-import MainModalsCard from "./homeComps/modalCard";
+import MainTitle from "../components/home/title";
+import MainSlider from "../components/home/slider";
+import MainMap from "../components/home/map";
+import MainModalsCard from "../components/home/modalCard";
 
 export default function HomePage () {
     return (

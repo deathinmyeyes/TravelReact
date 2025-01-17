@@ -1,4 +1,4 @@
-import ContactBlock from "./contactComps/block";
+import ContactBlock from "../components/contacts/block";
 
 export default function ContactPage () {
     return (
