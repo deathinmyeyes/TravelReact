@@ -1,59 +1,80 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default function ReviewManager () {
+export default ReviewManager = ({ attractionId }) => {
   const [reviews, setReviews] = useState([]);
-  const [rating, setRating] = useState(0);
+  const [selectedRating, setSelectedRating] = useState(0);
 
   const fetchReviews = async () => {
-    const response = await fetch("https://672b170d976a834dd0258e17.mockapi.io/api/v1/reviews");
-    const data = await response.json();
-    setReviews(data);
+    const response = await axios.get(`https://672b170d976a834dd0258e17.mockapi.io/api/v1/reviews?attractionId=${attractionId}`);
+    setReviews(response.data);
   };
 
   useEffect(() => {
     fetchReviews();
-  }, []);
+  }, [attractionId]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
-    const newReview = {
-      name: e.target.reviewName.value,
-      text: e.target.reviewText.value,
-      rating,
-    };
-    await fetch("https://672b170d976a834dd0258e17.mockapi.io/api/v1/reviews", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newReview),
-    });
-    fetchReviews();
+    const name = e.target.reviewName.value;
+    const text = e.target.reviewText.value;
+
+    if (!name || !text || selectedRating === 0) {
+      alert('Пожалуйста, заполните все поля и выберите рейтинг');
+      return;
+    }
+
+    try {
+      await axios.post('https://672b170d976a834dd0258e17.mockapi.io/api/v1/reviews', {
+        attractionId,
+        name,
+        text,
+        rating: selectedRating,
+      });
+      fetchReviews();
+    } catch (error) {
+      console.error('Ошибка при отправке отзыва:', error);
+    }
   };
 
   return (
-    <div>
-      <form id="reviewForm" onSubmit={handleSubmit}>
+    <div id="reviewsContainer">
+      <form id="reviewForm" onSubmit={handleSubmitReview}>
         <h1>Оставить отзыв</h1>
+        <p>Введите имя:</p>
         <input type="text" id="reviewName" placeholder="Ваше имя" required />
-        <input id="reviewText" placeholder="Ваш отзыв" required />
+        <p>Введите ваш отзыв:</p>
+        <textarea id="reviewText" placeholder="Ваш отзыв" required />
+        <p>Поставьте оценку:</p>
         <div className="rating">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span key={star} className="star" onClick={() => setRating(star)}>
-              {star <= rating ? "★" : "☆"}
+          {[1, 2, 3, 4, 5].map((value) => (
+            <span
+              key={value}
+              className={`star ${selectedRating >= value ? 'selected' : ''}`}
+              onClick={() => setSelectedRating(value)}
+            >
+              ★
             </span>
           ))}
         </div>
         <button type="submit">Оставить отзыв</button>
       </form>
-      <div id="reviewsContainer">
+      <div className="stats">
+        <p>Количество отзывов: <span id="totalReviews">{reviews.length}</span></p>
+        <p>Средняя оценка: <span id="averageRating">
+          {(reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length || 0).toFixed(1)}
+        </span></p>
+      </div>
+      <div>
         {reviews.map((review) => (
           <div key={review.id} className="review">
             <h3>{review.name}</h3>
-            <p>{review.text}</p>
             <div className="rating">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span key={star}>{star <= review.rating ? "★" : "☆"}</span>
+              {[1, 2, 3, 4, 5].map((value) => (
+                <span key={value} className={`star ${review.rating >= value ? 'selected' : ''}`}>★</span>
               ))}
             </div>
+            <p>{review.text}</p>
           </div>
         ))}
       </div>

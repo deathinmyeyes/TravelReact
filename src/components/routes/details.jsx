@@ -1,6 +1,4 @@
-export default function Details ({ attraction }) {
-  if (!attraction) return null;
-
+export default function Details ({ attraction, onClose }) {
   return (
     <div id="details" className="route__details">
       <h2>{attraction.name}</h2>
@@ -14,6 +12,7 @@ export default function Details ({ attraction }) {
       </div>
       <h2>Мы на карте</h2>
       {attraction.location}
+      <button onClick={onClose}>Закрыть</button>
     </div>
   );
 };
